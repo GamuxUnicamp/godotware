@@ -10,7 +10,7 @@ func _ready():
 func start_minigame():
 	print("= START MINIGAME")
 	# Instantiate Minigame
-	var scene = load("res://minigame.tscn")
+	var scene = load("res://minigames/00-bubble_smasher.tscn")
 	get_node("minigame_handler")._start_minigame(scene)
 	
 func close_minigame(win):
@@ -19,5 +19,3 @@ func close_minigame(win):
 		print("ganhou")
 	else:
 		print("perdeu")
-	remove_child(minigame)
-	
