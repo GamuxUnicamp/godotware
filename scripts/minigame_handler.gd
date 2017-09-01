@@ -3,7 +3,6 @@ extends Node2D
 # This signal is called when the minigame finishes
 signal minigame_end(win)
 
-
 # This is the instance of the running minigame
 var running_minigame
 

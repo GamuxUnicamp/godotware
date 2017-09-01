@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://inheritance_test/MicrogameBoilerplate.gd" type="Script" id=1]
+[ext_resource path="res://iconware.png" type="Texture" id=2]
+
+[node name="MicrogameBoilerplate" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 61.2802, 73.6643 )
+transform/scale = Vector2( 1.00333, 1 )
+texture = ExtResource( 2 )
+
+
