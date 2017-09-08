@@ -11,3 +11,10 @@ func _process(delta):
 	if(get_node("bubble_handler").get_children().size()==0):
 		emit_signal("minigame_end", true)
 	pass
+
+func start():
+	pass
+	
+func stop():
+	set_process(false)
+	pass
