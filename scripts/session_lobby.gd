@@ -5,20 +5,25 @@ signal minigame_end(win)
 
 #Minigame being currently played
 var current_minigame
+#Current minigame's difficulty
+var current_difficulty
 #Reference to minigame pod
-var minigame_pod
+onready var minigame_pod = get_node("microgame_pod")
 #Reference to minigame pod's transition animation
-var anim_transition
+onready var anim_transition = get_node("transition_animation")
+#Tracks if a minigame is currently runnning
+onready var is_minigame_running = false
+#Number of won minigames
+onready var won_minigames = 0
+#Number of lost minigames
+onready var lost_minigames = 0
 
 var minigame_ref
 
 func _ready():
-	minigame_pod = get_node("microgame_pod")
-	anim_transition = get_node("transition_animation")
-	
 	minigame_ref = preload("res://minigames/00-bubble_smasher.tscn")
+
 	open_minigame()
-	#set_fixed_process(true)
 	pass
 
 #Initialize minigame
@@ -39,20 +44,25 @@ func open_minigame():
 
 #Starts minigame
 func start_minigame():
-	print("SUTAATO")
+	print("Start Microgame!")
+	#Add signal
 	anim_transition.disconnect("finished", self, "_on_animation_finished")
+	is_minigame_running = true
 	current_minigame.start()
 	pass
 
 #End minigame
 func end_minigame(win):
-	print("ANDO")
+	print("End Microgame!")
+	is_minigame_running = false
 	current_minigame.stop()
 	#Check for win status
 	if win:
 		print("ganhou")
+		won_minigames += 1
 	else:
 		print("perdeu")
+		lost_minigames += 1
 	#Start animation
 	anim_transition.play("game_end")
 	anim_transition.connect("finished", self, "close_minigame")
@@ -60,8 +70,12 @@ func end_minigame(win):
 
 #Close minigame
 func close_minigame():
+	#Remove signal
+	anim_transition.disconnect("finished", self, "close_minigame")
+	#Remove from scene
 	minigame_pod.remove_child(current_minigame)
-	print("FIM")
+
+	open_minigame()
 	pass
 
 
