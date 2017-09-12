@@ -6,7 +6,7 @@ signal minigame_end(win)
 #Minigame being currently played
 var current_minigame
 #Current minigame's difficulty
-var current_difficulty
+var current_difficulty = 2
 #Reference to minigame pod
 onready var minigame_pod = get_node("microgame_pod")
 #Reference to minigame pod's transition animation
@@ -47,7 +47,9 @@ func start_minigame():
 	print("Start Microgame!")
 	#Add signal
 	anim_transition.disconnect("finished", self, "_on_animation_finished")
+	#Set minigame as running
 	is_minigame_running = true
+	#Start minigame
 	current_minigame.start()
 	pass
 
@@ -58,10 +60,10 @@ func end_minigame(win):
 	current_minigame.stop()
 	#Check for win status
 	if win:
-		print("ganhou")
+		print("You Win!")
 		won_minigames += 1
 	else:
-		print("perdeu")
+		print("You Lose!")
 		lost_minigames += 1
 	#Start animation
 	anim_transition.play("game_end")
@@ -75,11 +77,8 @@ func close_minigame():
 	#Remove from scene
 	minigame_pod.remove_child(current_minigame)
 
-	open_minigame()
+	open_minigame() #Will be removed
 	pass
-
-
-
 
 
 func _on_minigame_finished(win):
