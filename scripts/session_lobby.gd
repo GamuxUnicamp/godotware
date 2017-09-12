@@ -3,16 +3,19 @@ extends Node2D
 #This signal is called when the minigame finishes
 signal minigame_end(win)
 
+#Increase whole session's velocity
+var increase_world_velocity = true
+
 #Minigame being currently played
 var current_minigame
-#Current minigame's difficulty
-var current_difficulty = 2
 #Reference to minigame pod
 onready var minigame_pod = get_node("microgame_pod")
 #Reference to minigame pod's transition animation
 onready var anim_transition = get_node("transition_animation")
 #Tracks if a minigame is currently runnning
-onready var is_minigame_running = false
+var is_minigame_running = false
+#Current minigame's difficulty
+var current_difficulty = 2
 #Number of won minigames
 onready var won_minigames = 0
 #Number of lost minigames
@@ -62,6 +65,9 @@ func end_minigame(win):
 	if win:
 		print("You Win!")
 		won_minigames += 1
+		#If checked
+		if increase_world_velocity:
+			OS.set_time_scale(1 + won_minigames*0.1) # Gotta go fast!
 	else:
 		print("You Lose!")
 		lost_minigames += 1
