@@ -12,7 +12,7 @@ func _ready():
 
 func _start_minigame(minigame_ref):
 	# Starts minigame
-	running_minigame = scene.instance()
+	running_minigame = minigame_ref.instance()
 	add_child(running_minigame)
 	# Listen to its end
 	running_minigame.connect("minigame_end",self,"close_minigame")
@@ -24,4 +24,4 @@ func _close_minigame(win):
 	else:
 		print("perdeu")
 	# Remove minigame from stage
-	remove_child(minigame)
+	remove_child(running_minigame)
