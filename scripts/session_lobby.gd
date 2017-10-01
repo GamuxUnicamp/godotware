@@ -15,7 +15,7 @@ onready var anim_transition = get_node("transition_animation")
 #Tracks if a minigame is currently runnning
 var is_minigame_running = false
 #Current minigame's difficulty
-var current_difficulty = 2
+var current_difficulty = 8
 #Number of won minigames
 onready var won_minigames = 0
 #Number of lost minigames
