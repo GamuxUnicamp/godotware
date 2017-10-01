@@ -2,12 +2,14 @@ extends "res://scripts/minigame.gd"
 
 #=== MINIGAME BOILERPLATE ===#
 
+#-> Check inherited file scripts/minigame.gd for more details
+
 # This signal is called when the minigame finishes
 signal minigame_end(win)
 
 func _ready():
 	#= MINIGAME SETUP =#
-    #Setup for basic informations regarding your minigame. Check the minigame.gd file for other configurable values
+    #Setup for basic informations regarding your minigame. Check scripts/minigame.gd file for other configurable values
 	NAME = "Sample Microgame"
 	INSTRUCTION = "TAP!"
 	DURATION = 3.0

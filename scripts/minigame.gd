@@ -9,7 +9,7 @@ var DURATION = 5.0
 #Behaviour during timeouts
 var TIMEOUT_WIN = false
 
-#Difficulty Level (ranging from 1 to 10). Don't forget it's setted during _ready() (it won't work in _init())
+#Difficulty Level (ranging from 1 to 10). Don't forget it's set up during _ready() (it won't work in _init())
 onready var difficulty = get_parent().get_parent().current_difficulty
 #Reference to Timeout
 onready var time_bar = get_parent().get_parent().get_node("game_timer").get_node("ProgressBar")

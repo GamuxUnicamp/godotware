@@ -15,7 +15,7 @@ func _start_minigame(minigame_ref):
 	running_minigame = minigame_ref.instance()
 	add_child(running_minigame)
 	# Listen to its end
-	running_minigame.connect("minigame_end",self,"close_minigame")
+	running_minigame.connect("minigame_end",self,"_close_minigame")
 	
 func _close_minigame(win):
 	# Check for win status
