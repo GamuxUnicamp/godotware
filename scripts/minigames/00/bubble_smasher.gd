@@ -23,7 +23,6 @@ func _ready():
 		bubble = BUBBLE_REF.instance()
 		bubble.translate(Vector2(20*i,0))
 		bubble_handler.add_child(bubble)
-
 	pass
 
 
