@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://scripts/title_screen/title_test.gd" type="Script" id=1]
+[ext_resource path="res://arts/title.png" type="Texture" id=2]
+[ext_resource path="res://fonts/PaperCuts/papercuts.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 53
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 36
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+
+font/size = 85
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 3 )
+
+[node name="title_test" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="TextureFrame" type="TextureFrame" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 640.0
+margin/bottom = 400.0
+texture = ExtResource( 2 )
+stretch_mode = 0
+
+[node name="Label1" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 35.0
+margin/top = 138.0
+margin/right = 613.0
+margin/bottom = 221.0
+custom_fonts/font = SubResource( 1 )
+text = "(provisory name)"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="start_button" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 180.0
+margin/top = 268.0
+margin/right = 469.0
+margin/bottom = 337.0
+custom_fonts/font = SubResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Start Test Session"
+flat = false
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 145.0
+margin/top = 33.0
+margin/right = 492.0
+margin/bottom = 163.0
+custom_fonts/font = SubResource( 3 )
+text = "Godotware"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
+
+

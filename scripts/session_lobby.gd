@@ -24,7 +24,8 @@ onready var lost_minigames = 0
 var minigame_ref
 
 func _ready():
-	minigame_ref = preload("res://minigames/00-bubble_smasher.tscn")
+	minigame_ref = Array()
+	minigame_ref.append(preload("res://minigames/00-bubble_smasher.tscn"))
 
 	open_minigame()
 	pass
@@ -35,7 +36,7 @@ func open_minigame():
 	if(current_minigame):
 		current_minigame.queue_free()
 	#Instantiate minigame
-	current_minigame = minigame_ref.instance()
+	current_minigame = minigame_ref[0].instance()
 	current_minigame.translate(-get_viewport_rect().size/2)
 	minigame_pod.add_child(current_minigame)
 	#Listen to minigame's end
