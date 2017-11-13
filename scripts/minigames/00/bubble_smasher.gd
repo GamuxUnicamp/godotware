@@ -25,7 +25,6 @@ func _ready():
 		bubble_handler.add_child(bubble)
 	pass
 
-
 func _process(delta):
 	var bubble_count = bubble_handler.get_children().size()
 	# If there are no more bubbles, player wins
@@ -35,4 +34,18 @@ func _process(delta):
 		var bubbles = bubble_handler.get_children()
 		for i in range (bubble_count):
 			bubbles[i].process(delta)
+	pass
+
+func start():
+	# Call all bubbles to stop handling touch
+	get_tree().call_group(0, "bubble", "start")
+	# Call father's version function
+	.start()
+	pass
+
+func stop():
+	# Call all bubbles to stop handling touch
+	get_tree().call_group(0, "bubble", "stop")
+	# Call father's version function
+	.stop()
 	pass
