@@ -15,7 +15,9 @@ onready var anim_transition = get_node("transition_animation")
 #Tracks if a minigame is currently runnning
 var is_minigame_running = false
 #Current minigame's difficulty
-var current_difficulty = 8
+var current_difficulty = 4
+#Max number of lives
+var max_lives = 3
 #Number of won minigames
 onready var won_minigames = 0
 #Number of lost minigames
@@ -83,10 +85,19 @@ func close_minigame():
 	anim_transition.disconnect("finished", self, "close_minigame")
 	#Remove from scene
 	minigame_pod.remove_child(current_minigame)
-
+	if lost_minigames >= max_lives:
+		print("FINISH!")
+		print(won_minigames)
+		end_session()
 	open_minigame() #Will be removed
 	pass
 
+#End session
+func end_session():
+	global.last_session_data.score = won_minigames
+	print(global.last_session_data.score)
+	get_tree().change_scene("res://scenes/score_test.tscn")
+	pass
 
 func _on_minigame_finished(win):
 	end_minigame(win)
