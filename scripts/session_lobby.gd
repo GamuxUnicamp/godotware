@@ -25,7 +25,7 @@ var minigame_ref
 
 func _ready():
 	minigame_ref = Array()
-	minigame_ref.append(preload("res://minigames/00-bubble_smasher.tscn"))
+	minigame_ref.append(preload("res://minigames/00/00-bubble_smasher.tscn"))
 
 	open_minigame()
 	pass
