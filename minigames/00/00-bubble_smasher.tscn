@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://scripts/minigames/00/bubble_smasher.gd" type="Script" id=1]
+[ext_resource path="res://minigames/00/bubble_smasher.gd" type="Script" id=1]
 [ext_resource path="res://arts/bg1.png" type="Texture" id=2]
+
 
 [node name="00-bubble-smasher" type="Node2D"]
 

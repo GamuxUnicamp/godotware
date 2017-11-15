@@ -5,9 +5,8 @@ var ABS_VEL = 250
 var current_vel
 
 func _ready():
-	get_node("sprite").connect("button_down", self, "pop")
-	random_spawn()
 	generate_vel()
+	random_spawn()
 	pass
 
 func process(delta):
@@ -62,3 +61,12 @@ func get_lower_right_border():
 func pop():
 	queue_free()
 	pass
+
+#Start handling touch
+func start():
+	get_node("sprite").connect("button_down", self, "pop")
+	pass
+
+# Stop handling touch
+func stop():
+	get_node("sprite").disconnect("button_down", self, "pop")
