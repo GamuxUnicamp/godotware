@@ -8,7 +8,7 @@ func _ready():
 		global.best_scores["test"] = global.last_session_data.score
 	print(global.last_session_data.score)
 	score_text.set_text("Score: " + str(global.last_session_data.score))
-	best_score_text.set_text("Score: " + str(global.best_scores["test"]))
+	best_score_text.set_text("Best Score: " + str(global.best_scores["test"]))
 	pass
 
 func _on_return_button_pressed():

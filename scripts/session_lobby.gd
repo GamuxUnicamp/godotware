@@ -12,6 +12,11 @@ var current_minigame
 onready var minigame_pod = get_node("microgame_pod")
 #Reference to minigame pod's transition animation
 onready var anim_transition = get_node("transition_animation")
+#Reference to minigame command label
+onready var command_label = get_node("command_label")
+#Reference to life meter's handler
+onready var life_meter = get_node("life_meter")
+
 #Tracks if a minigame is currently runnning
 var is_minigame_running = false
 #Current minigame's difficulty
@@ -44,6 +49,9 @@ func open_minigame():
 	minigame_pod.add_child(current_minigame)
 	#Listen to minigame's end
 	current_minigame.connect("minigame_end",self,"_on_minigame_finished")
+	#Changed command label
+	command_label.set_text(current_minigame.INSTRUCTION)
+	command_label.show()
 	#Start animation
 	anim_transition.play("game_intro")
 	anim_transition.connect("finished", self, "_on_animation_finished")
@@ -52,6 +60,8 @@ func open_minigame():
 #Starts minigame
 func start_minigame():
 	print("Start Microgame!")
+	#
+	command_label.hide()
 	#Add signal
 	anim_transition.disconnect("finished", self, "_on_animation_finished")
 	#Set minigame as running
@@ -75,6 +85,7 @@ func end_minigame(win):
 	else:
 		print("You Lose!")
 		lost_minigames += 1
+		update_life_meter()
 	#Start animation
 	anim_transition.play("game_end")
 	anim_transition.connect("finished", self, "close_minigame")
@@ -97,7 +108,18 @@ func close_minigame():
 func end_session():
 	global.last_session_data.score = won_minigames
 	print(global.last_session_data.score)
+	OS.set_time_scale(1)
 	get_tree().change_scene("res://scenes/score_test.tscn")
+	pass
+
+#Update time meter
+func update_life_meter():
+	if lost_minigames >= 1:
+		life_meter.get_node("life1").hide()
+	if lost_minigames >= 2:
+		life_meter.get_node("life2").hide()
+	if lost_minigames >= 3:
+		life_meter.get_node("life3").hide()
 	pass
 
 func _on_minigame_finished(win):
