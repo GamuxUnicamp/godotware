@@ -19,6 +19,7 @@ func _ready():
 	#Configures initial values for timer
 	time_bar.set_max(DURATION)
 	time_bar.set_value(DURATION)
+	
 	pass
 
 func _process(delta):
@@ -52,3 +53,8 @@ func update_timer(delta):
 		#End minigame by timeout
 		emit_signal("minigame_end", TIMEOUT_WIN)
 	pass
+
+#Rotate minigame in case its played on vertical
+func rotate_minigame():
+	set_pos(Vector2(-get_viewport_rect().size.x/2,get_viewport_rect().size.y/2))
+	set_rot(PI/2.0)
