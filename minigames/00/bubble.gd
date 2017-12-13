@@ -1,5 +1,8 @@
 extends Node2D
 
+# Reference to the splash animation
+var SPLASH_REF = preload("res://minigames/00/bubble_splash.tscn")
+
 var ABS_VEL = 250
 
 var current_vel
@@ -57,12 +60,15 @@ func get_lower_right_border():
 	border -= get_node("sprite").get_size() + 2*get_node("sprite").get_pos()
 	return border
 
-# Remove bubble from scene
+# Instantiate the splash effect and remove bubble from scene
 func pop():
+	var splash = SPLASH_REF.instance()
+	splash.set_pos(get_pos())
+	get_parent().get_parent().add_child(splash)
 	queue_free()
 	pass
 
-#Start handling touch
+# Start handling touch
 func start():
 	get_node("sprite").connect("button_down", self, "pop")
 	pass
