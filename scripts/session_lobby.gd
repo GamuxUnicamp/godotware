@@ -44,7 +44,8 @@ func open_minigame():
 	if(current_minigame):
 		current_minigame.queue_free()
 	#Instantiate minigame
-	current_minigame = minigame_ref[1].instance()
+	var random_minigame = rand_range(0,minigame_ref.size())
+	current_minigame = minigame_ref[random_minigame].instance()
 	current_minigame.translate(-get_viewport_rect().size/2)
 	minigame_pod.add_child(current_minigame)
 	#Listen to minigame's end
