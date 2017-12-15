@@ -34,6 +34,7 @@ func _ready():
 	minigame_ref = Array()
 	minigame_ref.append(preload("res://minigames/00/00-bubble_smasher.tscn"))
 	minigame_ref.append(preload("res://minigames/01/01-bowling.tscn"))
+	minigame_ref.append(preload("res://minigames/02/02-flower_watering.tscn"))
 
 	open_minigame()
 	pass
@@ -44,7 +45,9 @@ func open_minigame():
 	if(current_minigame):
 		current_minigame.queue_free()
 	#Instantiate minigame
-	var random_minigame = rand_range(0,minigame_ref.size())
+	randomize()
+	var random_minigame = int(rand_range(0,minigame_ref.size()))
+	print(random_minigame)
 	current_minigame = minigame_ref[random_minigame].instance()
 	current_minigame.translate(-get_viewport_rect().size/2)
 	minigame_pod.add_child(current_minigame)
