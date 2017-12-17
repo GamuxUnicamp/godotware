@@ -16,3 +16,8 @@ func _on_Area2D_area_enter( area ):
 	if area.get_parent().is_in_group("ground"):
 		queue_free()
 	pass # replace with function body
+
+# Stops drop's actions
+func stop():
+	set_process(false)
+	get_node("sprite").get_node("anim").stop()

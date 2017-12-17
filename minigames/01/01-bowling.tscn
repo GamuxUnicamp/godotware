@@ -56,7 +56,8 @@ texture = ExtResource( 4 )
 
 [node name="Pin" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 193.983, 63.8424 )
+transform/pos = Vector2( 196.109, 130.716 )
+transform/scale = Vector2( 0.762581, 0.762581 )
 
 [node name="BowlingLimit" type="Area2D" parent="."]
 

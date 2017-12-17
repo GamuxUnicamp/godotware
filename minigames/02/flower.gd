@@ -1,10 +1,10 @@
 extends Node2D
 
-#
+# Signal triggered when flower blossoms
 signal flower_blossomed
 
 # Number of drops in order to blossom
-var DROPS_TO_TRANSFORM = 2
+var DROPS_TO_TRANSFORM = 1
 # State of the flower
 var opened = false
 # Animation node reference
@@ -32,3 +32,8 @@ func _on_Area2D_area_enter( area ):
 			#Call main method
 			emit_signal("flower_blossomed")
 	pass # replace with function body
+
+# Stops flower's actions
+func stop():
+	set_process(false)
+	get_node("sprite").get_node("anim").stop()

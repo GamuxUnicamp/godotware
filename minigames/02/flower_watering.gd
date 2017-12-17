@@ -6,17 +6,17 @@ extends "res://scripts/minigame.gd"
 
 # This signal is called when the minigame finishes
 signal minigame_end(win)
-#
+# Signal triggered when a flower blossoms
 signal flower_blossomed
 
-#
+# Holds a reference to flower's scene
 var FLOWER_REF = preload("res://minigames/02/flower.tscn")
-#
+# Holds valid spots for flower spawning in the x axis
 var FLOWER_SPOTS = [90, 170, 250, 330, 410, 490, 570]
-#
-var num_flowers
 
-#
+# Number of spawned flowers. Controlled by difficulty
+var num_flowers
+# Number of completed flowers
 var flowers_count
 
 
@@ -25,7 +25,7 @@ func _ready():
 	#Setup for basic informations regarding your minigame. Check scripts/minigame.gd file for other configurable values
 	NAME = "Flower Watering"
 	INSTRUCTION = "WATER!"
-	DURATION = 3.0
+	DURATION = 2.5
 	print("This minigame has the difficulty level equal to "+str(difficulty))
 	#
 	flowers_count = 0
@@ -51,13 +51,22 @@ func _process(delta):
 	#Be wary that timeouts may trigger defeat by default. You can change that by tweaking with TIMEOUT_WIN variable in setup
 	pass
 
-#
+# Stops all relevant nodes in scene
+func stop():
+	# Calls stop functions in all active nodes
+	get_tree().call_group(0, "cloud", "stop")
+	get_tree().call_group(0, "drops", "stop")
+	get_tree().call_group(0, "flowers", "stop")
+	# Call script's own stop function
+	.stop()
+	pass
+
+# Returns the number of flowers, according to the current difficulty value
 func number_of_flowers(difficulty):
 	return int(min(7,difficulty))
 
 # Function is called when new flower blossoms
 func new_flower():
-	print("eeeeeeeee")
 	#Add to flower counter
 	flowers_count += 1
 	#If flowers count is greater then difficulty, wins

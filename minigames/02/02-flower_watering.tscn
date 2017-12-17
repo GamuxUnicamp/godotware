@@ -37,7 +37,9 @@ script/script = ExtResource( 1 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="cloud" type="Node2D" parent="."]
+[node name="cloud" type="Node2D" parent="." groups=[
+"cloud",
+]]
 
 editor/display_folded = true
 transform/pos = Vector2( 233.638, 63.3082 )

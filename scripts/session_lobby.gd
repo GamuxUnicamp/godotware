@@ -1,41 +1,44 @@
 extends Node2D
 
-#This signal is called when the minigame finishes
+# This signal is called when the minigame finishes
 signal minigame_end(win)
 
-#Increase whole session's velocity
+# Increase whole session's velocity
 var increase_world_velocity = true
 
-#Minigame being currently played
+# Minigame being currently played
 var current_minigame
-#Reference to minigame pod
+# Reference to minigame pod
 onready var minigame_pod = get_node("microgame_pod")
-#Reference to minigame pod's transition animation
+# Reference to minigame pod's transition animation
 onready var anim_transition = get_node("transition_animation")
-#Reference to minigame command label
+# Reference to minigame command label
 onready var command_label = get_node("command_label")
-#Reference to life meter's handler
+# Reference to life meter's handler
 onready var life_meter = get_node("life_meter")
 
-#Tracks if a minigame is currently runnning
+# Tracks if a minigame is currently runnning
 var is_minigame_running = false
-#Current minigame's difficulty
+# Current minigame's difficulty
 var current_difficulty = 4
-#Max number of lives
+# Max number of lives
 var max_lives = 3
-#Number of won minigames
+# Number of won minigames
 onready var won_minigames = 0
-#Number of lost minigames
+# Number of lost minigames
 onready var lost_minigames = 0
-
+# Holds the index of the last played minigame to avoid repetitions
+onready var last_minigame_index = -1
+# Holds all minigame references for the current session
 var minigame_ref
 
 func _ready():
+	#Populate minigame references array
 	minigame_ref = Array()
 	minigame_ref.append(preload("res://minigames/00/00-bubble_smasher.tscn"))
 	minigame_ref.append(preload("res://minigames/01/01-bowling.tscn"))
 	minigame_ref.append(preload("res://minigames/02/02-flower_watering.tscn"))
-
+	#Open first minigame
 	open_minigame()
 	pass
 
@@ -44,10 +47,9 @@ func open_minigame():
 	#Delete minigame, if it still exists
 	if(current_minigame):
 		current_minigame.queue_free()
-	#Instantiate minigame
+	#Instantiate random minigame
 	randomize()
-	var random_minigame = int(rand_range(0,minigame_ref.size()))
-	print(random_minigame)
+	var random_minigame = select_minigame()
 	current_minigame = minigame_ref[random_minigame].instance()
 	current_minigame.translate(-get_viewport_rect().size/2)
 	minigame_pod.add_child(current_minigame)
@@ -64,7 +66,7 @@ func open_minigame():
 #Starts minigame
 func start_minigame():
 	print("Start Microgame!")
-	#
+	#Hide command label
 	command_label.hide()
 	#Add signal
 	anim_transition.disconnect("finished", self, "_on_animation_finished")
@@ -125,6 +127,14 @@ func update_life_meter():
 	if lost_minigames >= 3:
 		life_meter.get_node("life3").hide()
 	pass
+
+# Returns a random non-repeated minigame index
+func select_minigame():
+	var value = int(rand_range(0,minigame_ref.size()))
+	while value == last_minigame_index:
+		value = int(rand_range(0,minigame_ref.size()))
+	last_minigame_index = value
+	return value
 
 func _on_minigame_finished(win):
 	end_minigame(win)

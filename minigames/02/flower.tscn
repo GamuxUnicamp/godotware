@@ -42,7 +42,9 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 radius = 41.1773
 
-[node name="flower" type="Node2D"]
+[node name="flower" type="Node2D" groups=[
+"flowers",
+]]
 
 transform/pos = Vector2( 271.321, 345 )
 script/script = ExtResource( 1 )
