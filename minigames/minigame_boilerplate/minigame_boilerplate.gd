@@ -14,6 +14,7 @@ func _ready():
 	INSTRUCTION = "TAP!"
 	DURATION = 3.0
 	#You can also use the 'difficulty' variable, controlled by the Session, to tweak those values according to the difficulty
+	#The difficulty may range from 1(EASY), 2(MEDIUM), 3(HARD) and 4(INSANE)
 	print("This minigame has the difficulty level equal to "+str(difficulty))
 	#The command 'set_process(true)' is already called on base class _ready() function. It's not necessary to use it again.
 	pass

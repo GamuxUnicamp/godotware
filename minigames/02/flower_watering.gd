@@ -39,7 +39,7 @@ func _ready():
 		flower.set_pos(Vector2(pos_x,315))
 		flower.connect("flower_blossomed", self, "new_flower")
 		get_node("flower_manager").add_child(flower)
-	
+
 	pass
 
 func _process(delta):
@@ -63,7 +63,12 @@ func stop():
 
 # Returns the number of flowers, according to the current difficulty value
 func number_of_flowers(difficulty):
-	return int(min(7,difficulty))
+	if difficulty == 1: #EASY
+		return 3
+	elif difficulty == 2: #MEDIUM
+		return 5
+	#HARD and INSANE
+	return 7
 
 # Function is called when new flower blossoms
 func new_flower():

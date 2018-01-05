@@ -9,7 +9,7 @@ var DURATION = 5.0
 # Behaviour during timeouts
 var TIMEOUT_WIN = false
 
-# Difficulty Level (ranging from 1 to 10). Don't forget it's set up during _ready() (it won't work in _init())
+# Difficulty Level (ranging from 1 to 4). Don't forget it's set up during _ready() (it won't work in _init())
 var difficulty = 0
 # Reference to Timeout
 var time_bar = null
@@ -31,7 +31,7 @@ func _ready():
 		#Configures initial values for timer
 		time_bar.set_max(DURATION)
 		time_bar.set_value(DURATION)
-	
+
 	pass
 
 func _process(delta):

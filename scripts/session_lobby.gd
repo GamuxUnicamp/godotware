@@ -20,7 +20,7 @@ onready var life_meter = get_node("life_meter")
 # Tracks if a minigame is currently runnning
 var is_minigame_running = false
 # Current minigame's difficulty
-var current_difficulty = 4
+var current_difficulty = 2
 # Max number of lives
 var max_lives = 3
 # Number of won minigames
