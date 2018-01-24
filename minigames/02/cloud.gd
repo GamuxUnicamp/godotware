@@ -14,7 +14,6 @@ var count
 
 func _ready():
 	count = 0
-	set_process(true)
 	pass
 
 func _process(delta):
@@ -30,6 +29,10 @@ func _process(delta):
 		drop.set_pos(get_pos() + spawn_point + x_variation)
 		get_parent().add_child(drop)
 	pass
+
+# Start handling touch
+func start():
+	set_process(true)
 
 # Stop handling touch
 func stop():

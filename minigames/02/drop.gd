@@ -1,7 +1,7 @@
 extends Node2D
 
 # Drop's falling speed
-var fall_speed = 200
+var fall_speed = 250
 
 func _ready():
 	set_process(true)

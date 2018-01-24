@@ -55,8 +55,8 @@ func number_of_bubbles(difficulty):
 	if difficulty == 1: #EASY
 		return 3
 	elif difficulty == 2: #MEDIUM
-		return 5
+		return 4
 	elif difficulty == 3: #HARD
-		return 8
+		return 7
 	#INSANE
-	return 12
+	return 10

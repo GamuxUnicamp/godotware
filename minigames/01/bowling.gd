@@ -28,10 +28,10 @@ func _ready():
 	#You can also use the 'difficulty' variable, controlled by the Session, to tweak those values according to the difficulty
 	print("This minigame has the difficulty level equal to "+str(difficulty))
 	#The command 'set_process(true)' is already called on base class _ready() function. It's not necessary to use it again.
-	
+
 	get_node("BowlingLimit").connect("area_enter", self, "bowling_limit_area_enter")
 	get_node("WallLimit").connect("area_enter", self, "wall_limit_area_enter")
-	
+
 	var scale = get_node("Ball").get_pos().y/(get_viewport().get_rect().size.x-200)
 	get_node("Ball").set_scale(Vector2(scale, scale))
 
@@ -39,10 +39,12 @@ func _process(delta):
 #	get_node("Ball").set_scale(Vector2(get_node("Ball").get_global_pos().x/(get_viewport().get_rect().size.x-300),get_node("Ball").get_global_pos().x/(get_viewport().get_rect().size.x-300)))
 	var scale = get_node("Ball").get_pos().y/(get_viewport().get_rect().size.x-200)
 	get_node("Ball").set_scale(Vector2(scale, scale))
-	#This is the main game loop. Implement your main mechanics here
-	#To finish the game with a victory, use:
-	#		emit_signal("minigame_end", true)
-	#To finish the game with a defeat, use:
-	#		emit_signal("minigame_end", false)
-	#Be wary that timeouts may trigger defeat by default. You can change that by tweaking with TIMEOUT_WIN variable in setup
 	pass
+
+func start():
+	get_node("Ball").start()
+	.start()
+
+func stop():
+	get_node("Ball").stop()
+	.stop()

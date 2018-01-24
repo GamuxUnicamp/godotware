@@ -51,6 +51,14 @@ func _process(delta):
 	#Be wary that timeouts may trigger defeat by default. You can change that by tweaking with TIMEOUT_WIN variable in setup
 	pass
 
+# Starts all relevant nodes in scene
+func start():
+	# Calls start functions in all active nodes
+	get_tree().call_group(0, "cloud", "start")
+	get_tree().call_group(0, "flowers", "start")
+	# Call father's version function
+	.start()
+
 # Stops all relevant nodes in scene
 func stop():
 	# Calls stop functions in all active nodes
