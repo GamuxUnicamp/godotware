@@ -15,7 +15,7 @@ func _ready():
 	INSTRUCTION = "POP!"
 	DURATION = 2.0
 	# Set number of bubbles
-	BUBBLES_NUM = difficulty
+	BUBBLES_NUM = number_of_bubbles(difficulty)
 
 	# Instantiate bubbles
 	bubble_handler = get_node("bubble_handler")
@@ -49,3 +49,14 @@ func stop():
 	# Call father's version function
 	.stop()
 	pass
+
+# Returns the number of bubbles, according to the current difficulty value
+func number_of_bubbles(difficulty):
+	if difficulty == 1: #EASY
+		return 3
+	elif difficulty == 2: #MEDIUM
+		return 4
+	elif difficulty == 3: #HARD
+		return 7
+	#INSANE
+	return 10

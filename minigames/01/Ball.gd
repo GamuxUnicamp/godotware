@@ -10,11 +10,15 @@ func bowl():
 	bowling = true
 	is_pressed = false
 
-func _ready():
+func start():
 	add_to_group("player")
 	get_node("Area2D").connect("input_event", self, "on_input_event")
 	set_process(true)
 	pass
+
+func stop():
+	set_process(false)
+	get_node("Area2D").disconnect("input_event", self, "on_input_event")
 
 func on_input_event(viewport, event, shape_idx):
 	if event.type == InputEvent.SCREEN_TOUCH:
