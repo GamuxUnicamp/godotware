@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://minigames/00/bubble_splash.gd" type="Script" id=1]
-[ext_resource path="res://arts/bubble_splash.png" type="Texture" id=2]
+[ext_resource path="res://arts/minigames/bubble_splash.png" type="Texture" id=2]
+
 
 [node name="bubble_splash" type="Node2D"]
 
