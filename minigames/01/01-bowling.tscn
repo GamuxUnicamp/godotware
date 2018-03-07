@@ -6,8 +6,6 @@
 [ext_resource path="res://arts/minigames/bowling_hole.png" type="Texture" id=4]
 [ext_resource path="res://minigames/01/Pin.tscn" type="PackedScene" id=5]
 
-
-
 [sub_resource type="LineShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -58,8 +56,8 @@ texture = ExtResource( 4 )
 
 [node name="Pin" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 196.109, 130.716 )
-transform/scale = Vector2( 0.762581, 0.762581 )
+transform/pos = Vector2( 150, 62.5975 )
+transform/scale = Vector2( 0.65, 0.65 )
 
 [node name="BowlingLimit" type="Area2D" parent="."]
 

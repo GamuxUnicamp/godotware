@@ -75,8 +75,10 @@ func number_of_flowers(difficulty):
 		return 3
 	elif difficulty == 2: #MEDIUM
 		return 5
-	#HARD and INSANE
-	return 7
+	elif (difficulty == 3 or #HARD
+		difficulty == 4): #INSANE
+		return 7
+	return 5 #NOT_DEFINED
 
 # Function is called when new flower blossoms
 func new_flower():

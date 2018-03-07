@@ -3,7 +3,6 @@
 [ext_resource path="res://minigames/00/bubble_smasher.gd" type="Script" id=1]
 [ext_resource path="res://arts/minigames/bg1.png" type="Texture" id=2]
 
-
 [node name="00-bubble-smasher" type="Node2D"]
 
 script/script = ExtResource( 1 )
