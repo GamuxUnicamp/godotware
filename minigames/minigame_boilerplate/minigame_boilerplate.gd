@@ -27,3 +27,13 @@ func _process(delta):
 	#		emit_signal("minigame_end", false)
 	#Be wary that timeouts may trigger defeat by default. You can change that by tweaking with TIMEOUT_WIN variable in setup
 	pass
+
+func start():
+	#Be sure to only enable minigame elements in this method.
+	.start()
+	pass
+
+func stop():
+	#Be sure to disable active minigame elements in this method.
+	.stop()
+	pass

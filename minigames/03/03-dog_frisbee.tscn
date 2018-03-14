@@ -1,0 +1,121 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://minigames/03/dog_frisbee.gd" type="Script" id=1]
+[ext_resource path="res://arts/minigames/sky1.png" type="Texture" id=2]
+[ext_resource path="res://arts/minigames/bowling_pin.png" type="Texture" id=3]
+[ext_resource path="res://arts/sessions/heart.png" type="Texture" id=4]
+[ext_resource path="res://minigames/03/dog_result.gd" type="Script" id=5]
+[ext_resource path="res://arts/minigames/GamuxDogSad.png" type="Texture" id=6]
+[ext_resource path="res://arts/minigames/GamuxDog.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "running"
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "happy"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "sad"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+
+[node name="XX-minigame_boilerplate" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="bg" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+centered = false
+
+[node name="dog" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 334.962, 222.074 )
+
+[node name="sprite" type="Sprite" parent="dog"]
+
+texture = ExtResource( 3 )
+
+[node name="anim" type="AnimationPlayer" parent="dog/sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/running = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="owner" type="Node2D" parent="."]
+
+transform/pos = Vector2( 582.945, 299.8 )
+
+[node name="sprite" type="Sprite" parent="owner"]
+
+texture = ExtResource( 4 )
+
+[node name="anim" type="AnimationPlayer" parent="owner/sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="dog_result" type="Node2D" parent="."]
+
+transform/pos = Vector2( 340, 500 )
+script/script = ExtResource( 5 )
+
+[node name="sprite" type="Sprite" parent="dog_result"]
+
+transform/scale = Vector2( 0.448916, 0.448916 )
+texture = ExtResource( 6 )
+
+[node name="anim" type="AnimationPlayer" parent="dog_result/sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/happy = SubResource( 2 )
+anims/sad = SubResource( 3 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+

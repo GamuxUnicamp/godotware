@@ -36,7 +36,8 @@ func _ready():
 
 func _process(delta):
 	#Call timer update function.
-	update_timer(delta)
+	if not is_testing():
+		update_timer(delta)
 	pass
 
 # This method is called right after the minigame starts being playable.
@@ -44,7 +45,8 @@ func start():
 	#Turns on the game loop.
 	set_process(true)
 	#Show the timer bar.
-	time_bar.show()
+	if not is_testing():
+		time_bar.show()
 	pass
 
 # This method is called after the minigame is won or lost.
@@ -71,3 +73,8 @@ func update_timer(delta):
 func rotate_minigame():
 	set_pos(Vector2(-get_viewport_rect().size.x/2,get_viewport_rect().size.y/2))
 	set_rot(PI/2.0)
+
+# Check if minigame is being played as a standalone node for testing.
+func is_testing():
+	return time_bar == null
+
