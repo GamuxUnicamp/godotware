@@ -8,10 +8,6 @@
 [ext_resource path="res://arts/sessions/rope.png" type="Texture" id=6]
 [ext_resource path="res://arts/sessions/heart.png" type="Texture" id=7]
 
-
-
-
-
 [sub_resource type="StyleBoxFlat" id=1]
 
 content_margin/left = -1.0
