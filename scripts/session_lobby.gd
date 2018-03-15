@@ -38,6 +38,7 @@ func _ready():
 	minigame_ref.append(preload("res://minigames/00/00-bubble_smasher.tscn"))
 	minigame_ref.append(preload("res://minigames/01/01-bowling.tscn"))
 	minigame_ref.append(preload("res://minigames/02/02-flower_watering.tscn"))
+	minigame_ref.append(preload("res://minigames/03/03-driver.tscn"))
 	minigame_ref.append(preload("res://minigames/04/04-dog_frisbee.tscn"))
 	#Open first minigame
 	open_minigame()
