@@ -1,6 +1,6 @@
 extends Spatial
 
-const SPEED = 2.0
+const SPEED = 4.0
 const TURN_SPEED = 1.0
 const DISTANCE_LIMIT = 2.0
 

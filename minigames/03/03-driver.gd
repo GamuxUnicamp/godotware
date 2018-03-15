@@ -11,11 +11,16 @@ func _ready():
 	NAME = "Hot Wheels"
 	INSTRUCTION = "DRIVE!"
 	DURATION = 5.0
+	TIMEOUT_WIN = true
 	#You can also use the 'difficulty' variable, controlled by the Session, to tweak those values according to the difficulty
 	#The difficulty may range from 1(EASY), 2(MEDIUM), 3(HARD) and 4(INSANE)
 	print("This minigame has the difficulty level equal to "+str(difficulty))
 	#The command 'set_process(true)' is already called on base class _ready() function. It's not necessary to use it again.
+	get_node("AnimationPlayer").connect("finished", self, "_on_animation_finished")
 	init_stage()
+
+func _on_animation_finished():
+	emit_signal("minigame_end", false)
 
 func init_stage():
 	var origin = get_node("3DViewportControl/Viewport/Origin")
@@ -24,7 +29,7 @@ func init_stage():
 	for i in range(3):
 		var z = randi()%distance_vector.size()
 		var new_cone = CONE_SCENE.instance()
-		new_cone.set_translation(Vector3((i+1)*2, 0, distance_vector[z]))
+		new_cone.set_translation(Vector3((i+2)*4, 0, distance_vector[z]))
 		distance_vector.remove(z)
 		origin.add_child(new_cone)
 		
@@ -37,6 +42,7 @@ func init_stage():
 			player.connect("collide", self, "_on_collide")
 
 func _on_collide():
+	TIMEOUT_WIN = false
 	get_node("AnimationPlayer").play("background_crash")
 
 func _process(delta):

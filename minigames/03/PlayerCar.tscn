@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://minigames/03/PlayerCar.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://arts/hands_on_wheel.png" type="Texture" id=2]
+[ext_resource path="res://arts/car_painel.png" type="Texture" id=3]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -91,7 +92,7 @@ v_offset = 0.0
 [node name="SpriteSteering" type="Sprite3D" parent="Sprites"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -0.696619, 1.20342, 0 )
+transform/local = Transform( -2.70436e-08, 0, 0.165992, 0, 0.165992, 0, -0.165992, 0, -2.70436e-08, -0.696619, 1.33896, 0 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -107,7 +108,7 @@ geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
 centered = true
-offset = Vector2( 0, 0 )
+offset = Vector2( 0, -250 )
 flip_h = false
 flip_v = false
 modulate = Color( 1, 1, 1, 1 )
@@ -129,7 +130,7 @@ region_rect = Rect2( 0, 0, 0, 0 )
 [node name="SpriteInsideCar" type="Sprite3D" parent="Sprites"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( -4.8012e-07, 0, 2.94695, 0, 2.94695, 0, -2.94695, 0, -4.8012e-07, -0.619581, 0.408718, -0.00436902 )
+transform/local = Transform( -3.32756e-08, 0, 0.204244, 0, 0.204244, 0, -0.204244, 0, -3.32756e-08, -0.619581, 0.832908, -0.00436902 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null
@@ -157,7 +158,7 @@ flags/shaded = false
 flags/double_sided = true
 flags/on_top = false
 flags/alpha_cut = 0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 vframes = 1
 hframes = 1
 frame = 0
