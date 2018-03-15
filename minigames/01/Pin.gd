@@ -1,6 +1,5 @@
 extends Sprite
 
-const Utils = preload("res://scripts/utils.gd")
 
 onready var vel = Vector2(0.0,0.0)
 onready var is_flying = false

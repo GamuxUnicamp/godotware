@@ -1,0 +1,230 @@
+[gd_scene load_steps=21 format=1]
+
+[ext_resource path="res://minigames/04/dog_frisbee.gd" type="Script" id=1]
+[ext_resource path="res://arts/minigames/sky1.png" type="Texture" id=2]
+[ext_resource path="res://arts/minigames/ground.png" type="Texture" id=3]
+[ext_resource path="res://minigames/04/dog_player.gd" type="Script" id=4]
+[ext_resource path="res://arts/minigames/dogsprite0003.png" type="Texture" id=5]
+[ext_resource path="res://arts/minigames/dogsprite0005.png" type="Texture" id=6]
+[ext_resource path="res://arts/minigames/dogsprite0001.png" type="Texture" id=7]
+[ext_resource path="res://arts/minigames/dogsprite0002.png" type="Texture" id=8]
+[ext_resource path="res://arts/minigames/dogsprite0004.png" type="Texture" id=9]
+[ext_resource path="res://arts/sessions/heart.png" type="Texture" id=10]
+[ext_resource path="res://minigames/04/frisbee.gd" type="Script" id=11]
+[ext_resource path="res://arts/minigames/frisbee.png" type="Texture" id=12]
+[ext_resource path="res://minigames/04/dog_result.gd" type="Script" id=13]
+[ext_resource path="res://arts/minigames/GamuxDogSad.png" type="Texture" id=14]
+[ext_resource path="res://arts/minigames/GamuxDog.png" type="Texture" id=15]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "running"
+length = 0.5
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 9 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 33.8131
+height = 1.83151
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 36.1145
+
+[sub_resource type="Animation" id=4]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 15 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 14 ) ]
+}
+
+[node name="04-dog_frisbee" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="bg" type="Sprite" parent="."]
+
+editor/display_folded = true
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ground" type="Sprite" parent="bg"]
+
+transform/pos = Vector2( 0, 356.487 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="dog" type="Node2D" parent="." groups=[
+"activable",
+"dog",
+]]
+
+transform/pos = Vector2( 499.556, 328.289 )
+script/script = ExtResource( 4 )
+
+[node name="sprite" type="Sprite" parent="dog"]
+
+transform/pos = Vector2( 29.0281, 4.85825 )
+transform/scale = Vector2( 0.153456, 0.153456 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="anim" type="AnimationPlayer" parent="dog/sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/running = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Area2D" type="Area2D" parent="dog"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 3.10873, 10.4261 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dog/Area2D"]
+
+transform/pos = Vector2( 3.10873, 10.4261 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="owner" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 582.945, 299.8 )
+
+[node name="sprite" type="Sprite" parent="owner"]
+
+visibility/visible = false
+transform/pos = Vector2( 52.3389, -20.4337 )
+texture = ExtResource( 10 )
+
+[node name="anim" type="AnimationPlayer" parent="owner/sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="frisbee" type="Node2D" parent="." groups=[
+"activable",
+"frisbee",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 542.68, 201.002 )
+script/script = ExtResource( 11 )
+
+[node name="sprite" type="Sprite" parent="frisbee"]
+
+editor/display_folded = true
+transform/scale = Vector2( 0.105087, 0.105087 )
+texture = ExtResource( 12 )
+
+[node name="anim" type="AnimationPlayer" parent="frisbee/sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Area2D" type="Area2D" parent="frisbee"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -1.58887, -2.38329 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="frisbee/Area2D"]
+
+transform/pos = Vector2( -1.58887, -2.38329 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="dog_result" type="Node2D" parent="." groups=[
+"activable",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 340, 500 )
+script/script = ExtResource( 13 )
+
+[node name="sprite" type="Sprite" parent="dog_result"]
+
+transform/scale = Vector2( 0.448916, 0.448916 )
+texture = ExtResource( 14 )
+
+[node name="anim" type="AnimationPlayer" parent="dog_result/sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/happy = SubResource( 4 )
+anims/sad = SubResource( 5 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="area_enter" from="dog/Area2D" to="dog" method="_on_Area2D_area_enter"]
+
+

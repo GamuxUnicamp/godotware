@@ -67,7 +67,6 @@ autoplay = "cloud"
 "ground",
 ]]
 
-editor/display_folded = true
 transform/pos = Vector2( 0, 342.079 )
 transform/scale = Vector2( 1, 1.21842 )
 texture = ExtResource( 5 )

@@ -15,11 +15,13 @@ var difficulty = 0
 var time_bar = null
 # Boolean for testing scenario.
 var testing = false
+# Determinate if duration was set.
+var time_set = false
 
 func _ready():
 	#Check if it's a test or a session execution.
 	if get_tree().get_root().has_node(self.get_name()):
-		#It's a test
+		#It's a test execution.
 		testing = true
 	else:
 		#It's a session execution.
@@ -28,15 +30,17 @@ func _ready():
 		difficulty = get_parent().get_parent().current_difficulty
 		time_bar = get_parent().get_parent().get_node("game_timer").get_node("ProgressBar")
 		print("Difficulty level: "+str(difficulty))
-		#Configures initial values for timer.
-		time_bar.set_max(DURATION)
-		time_bar.set_value(DURATION)
-
+	print("This minigame has the difficulty level equal to "+str(difficulty))
 	pass
 
 func _process(delta):
-	#Call timer update function.
-	if not is_testing():
+	if not testing:
+		#Configures initial values for timer.
+		if not time_set:
+			time_bar.set_max(DURATION)
+			time_bar.set_value(DURATION)
+			time_set = true
+		#Call timer update function.
 		update_timer(delta)
 	pass
 
@@ -45,7 +49,7 @@ func start():
 	#Turns on the game loop.
 	set_process(true)
 	#Show the timer bar.
-	if not is_testing():
+	if not testing:
 		time_bar.show()
 	pass
 
@@ -54,7 +58,8 @@ func stop():
 	#Turns off the game loop.
 	set_process(false)
 	#Hide the timer bar.
-	time_bar.hide()
+	if not testing:
+		time_bar.hide()
 	pass
 
 # Updates the timer bar values.
@@ -74,7 +79,4 @@ func rotate_minigame():
 	set_pos(Vector2(-get_viewport_rect().size.x/2,get_viewport_rect().size.y/2))
 	set_rot(PI/2.0)
 
-# Check if minigame is being played as a standalone node for testing.
-func is_testing():
-	return time_bar == null
 
