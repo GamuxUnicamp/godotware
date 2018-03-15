@@ -1,15 +1,15 @@
 extends Node2D
 
-# Reference to drop scene
+# Reference to drop scene.
 var DROP_REF = preload("res://minigames/02/drop.tscn")
-# Rain drops spawn speed in seconds
+# Rain drops spawn speed in seconds.
 var drop_spawn_speed = 0.25
-# Rain drop spawn point
+# Rain drop spawn point.
 var spawn_point = Vector2(0,50)
-# Amount of variation in the x axis for drop spawning
+# Amount of variation in the x axis for drop spawning.
 var spawn_x_variation = 50
 
-# Counter for time
+# Counter for time.
 var count
 
 func _ready():

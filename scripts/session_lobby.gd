@@ -20,7 +20,7 @@ onready var life_meter = get_node("life_meter")
 # Tracks if a minigame is currently runnning
 var is_minigame_running = false
 # Current minigame's difficulty
-var current_difficulty = 2
+var current_difficulty = global.selected_difficulty
 # Max number of lives
 var max_lives = 3
 # Number of won minigames
@@ -38,6 +38,7 @@ func _ready():
 	minigame_ref.append(preload("res://minigames/00/00-bubble_smasher.tscn"))
 	minigame_ref.append(preload("res://minigames/01/01-bowling.tscn"))
 	minigame_ref.append(preload("res://minigames/02/02-flower_watering.tscn"))
+	minigame_ref.append(preload("res://minigames/04/04-dog_frisbee.tscn"))
 	#Open first minigame
 	open_minigame()
 	pass
