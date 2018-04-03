@@ -30,16 +30,13 @@ onready var lost_minigames = 0
 # Holds the index of the last played minigame to avoid repetitions
 onready var last_minigame_index = -1
 # Holds all minigame references for the current session
-var minigame_ref
+onready var minigame_ref = []
 
 func _ready():
 	#Populate minigame references array
-	minigame_ref = Array()
-	minigame_ref.append(preload("res://minigames/00/00-bubble_smasher.tscn"))
-	minigame_ref.append(preload("res://minigames/01/01-bowling.tscn"))
-	minigame_ref.append(preload("res://minigames/02/02-flower_watering.tscn"))
-	minigame_ref.append(preload("res://minigames/03/03-driver.tscn"))
-	minigame_ref.append(preload("res://minigames/04/04-dog_frisbee.tscn"))
+	var minigame_ref_string = global.get_available_minigames()
+	for s in minigame_ref_string:
+		minigame_ref.append(load(s))
 	#Open first minigame
 	open_minigame()
 	pass

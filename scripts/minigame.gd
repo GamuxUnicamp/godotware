@@ -1,22 +1,22 @@
 extends Node2D
 
 # Minigame's name.
-var NAME = "Sampĺe"
+export(String) var NAME = "Sample"
 # Minigame quick instruction (usually one command verb). Ex: Slide!
-var INSTRUCTION = "TAP!"
+export(String) var INSTRUCTION = "TAP!"
 # Minigame duration in seconds.
-var DURATION = 5.0
+export(int) var DURATION = 5.0
 # Behaviour during timeouts.
-var TIMEOUT_WIN = false
+export(bool) var TIMEOUT_WIN = false
 
 # Difficulty Level (ranging from 1 to 4). Don't forget it's set up during _ready(). (it won't work in _init())
-var difficulty = 0
+onready var difficulty = 0
 # Reference to Timeout.
-var time_bar = null
+onready var time_bar = null
 # Boolean for testing scenario.
-var testing = false
+onready var testing = false
 # Determinate if duration was set.
-var time_set = false
+onready var time_set = false
 
 func _ready():
 	#Check if it's a test or a session execution.

@@ -201,7 +201,6 @@ centered = false
 
 [node name="microgame_pod" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 320, 200 )
 
 [node name="icon" type="Sprite" parent="microgame_pod"]
