@@ -13,7 +13,7 @@ func _ready():
 
 func _process(delta):
 	a = get_pos()
-	set_pos(a+Vector2(0,5))
+	set_pos(a+Vector2(0,3.98))
 	
 
 func _on_artigo1_body_enter( body ):

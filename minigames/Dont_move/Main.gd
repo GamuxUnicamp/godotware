@@ -14,9 +14,8 @@ func _ready():
 
 func _input(event):
 	if event.type == InputEvent.MOUSE_MOTION or event.type == InputEvent.MOUSE_BUTTON or event.type == InputEvent.KEY:
-		
 		emit_signal("minigame_end", false)
-		
+
 func _process(delta):
 	#This is the main game loop. Implement your main mechanics here
 	#To finish the game with a victory, use:
