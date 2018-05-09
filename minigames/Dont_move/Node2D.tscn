@@ -1,22 +1,14 @@
 [gd_scene load_steps=10 format=1]
 
-[ext_resource path="res://minigames/dont_move/Node2D.gd" type="Script" id=1]
-[ext_resource path="res://minigames/dont_move/dont.png" type="Texture" id=2]
-[ext_resource path="res://minigames/dont_move/Main.gd" type="Script" id=3]
-[ext_resource path="res://minigames/dont_move/win.png" type="Texture" id=4]
-[ext_resource path="res://minigames/dont_move/win.gd" type="Script" id=5]
-[ext_resource path="res://minigames/dont_move/lost.png" type="Texture" id=6]
-[ext_resource path="res://minigames/dont_move/lost.gd" type="Script" id=7]
+[ext_resource path="res://minigames/Dont_move/Node2D.gd" type="Script" id=1]
+[ext_resource path="res://minigames/Dont_move/dont.png" type="Texture" id=2]
+[ext_resource path="res://minigames/Dont_move/Main.gd" type="Script" id=3]
+[ext_resource path="res://minigames/Dont_move/win.png" type="Texture" id=4]
+[ext_resource path="res://minigames/Dont_move/win.gd" type="Script" id=5]
+[ext_resource path="res://minigames/Dont_move/lost.png" type="Texture" id=6]
+[ext_resource path="res://minigames/Dont_move/lost.gd" type="Script" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
-[ext_resource path="res://minigames/dont_move/timer.gd" type="Script" id=9]
-
-
-
-
-
-
-
-
+[ext_resource path="res://minigames/Dont_move/timer.gd" type="Script" id=9]
 
 [node name="game" type="Node2D"]
 
@@ -28,6 +20,10 @@ transform/pos = Vector2( 504.22, 267.35 )
 transform/scale = Vector2( 0.799633, 0.730004 )
 texture = ExtResource( 2 )
 script/script = ExtResource( 3 )
+NAME = "Sample"
+INSTRUCTION = "TAP!"
+DURATION = 5.0
+TIMEOUT_WIN = false
 
 [node name="win" type="Sprite" parent="."]
 

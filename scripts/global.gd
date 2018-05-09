@@ -4,6 +4,13 @@ extends Node
 var main_node setget , _get_main_node
 var view_size setget , _get_view_size
 
+onready var debug_minigame = ""
+
+func get_debug_minigame():
+	var minigame = []
+	minigame.append(debug_minigame)
+	
+	return minigame
 
 func get_available_minigames():
 	var minigames = []
