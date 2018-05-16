@@ -9,8 +9,8 @@
 [ext_resource path="res://minigames/Goats!!/goat_sprite0.png" type="Texture" id=7]
 [ext_resource path="res://minigames/Goats!!/aim.gd" type="Script" id=8]
 [ext_resource path="res://minigames/Goats!!/aim0.png" type="Texture" id=9]
-[ext_resource path="res://minigames/Goats!!/goat2.png" type="Texture" id=10]
-[ext_resource path="res://minigames/Goats!!/goat0.png" type="Texture" id=11]
+[ext_resource path="res://minigames/Goats!!/goat0.png" type="Texture" id=10]
+[ext_resource path="res://minigames/Goats!!/goat2.png" type="Texture" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -38,12 +38,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "Win",
+"name": "Lose",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
-"name": "Lose",
+"name": "Win",
 "speed": 5.0
 } ]
 

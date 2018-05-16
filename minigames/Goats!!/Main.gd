@@ -51,18 +51,16 @@ func start():
 	for goat in get_node("Goats").get_children():
 		goat.set_process(true)
 		goat.connect("morreu", self, "_on_morreu")
+		var defWait
 		if difficulty == 1:
-			DURATION = 5
-			goat.defWait = 0.2
+			defWait = 0.3
 		elif difficulty == 2:
-			DURATION = 5
-			goat.defWait = 0.15
+			defWait = 0.2
 		elif difficulty == 3:
-			DURATION = 5
-			goat.defWait = 0.1
+			defWait = 0.15
 		else:
-			DURATION = 5
-			goat.defWait = 0.075
+			defWait = 0.1
+		goat.set_waitTime(defWait)
 	for flowerbed in get_node("Flowers").get_children():
 		for flower in flowerbed.get_children():
 			flower.set_process(true)

@@ -16,8 +16,16 @@ signal morreu
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	pass
+	randomize()
 	
+	waitTime = defWait/2 + (randf()*defWait)
+	
+	pass
+
+func set_waitTime(wait):
+	waitTime = wait/2 + (randf()*wait)
+	defWait = wait
+
 func die():
 	if alive:
 		get_node("Sprite").set_frame(2)
@@ -29,7 +37,7 @@ func _process(delta):
 		timer += delta
 		if timer >= waitTime:
 			timer = 0
-			waitTime = defWait+(randf()*defWait/10)
+#			waitTime = defWait+(randf()*defWait)
 			move(Vector2(25,0))
 			if sprite == 0:
 				sprite = 1

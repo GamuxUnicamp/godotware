@@ -13,7 +13,7 @@ func _ready():
 
 func _process(delta):
 	a = get_pos()
-	set_pos(a+Vector2(0,3.98))
+	set_pos(a+Vector2(0,240.0 * delta))
 	
 
 func _on_artigo1_body_enter( body ):
@@ -27,6 +27,5 @@ func _on_artigo1_body_enter( body ):
 		randomize()
 		b = randi() % 560 + 40
 		set_pos(Vector2(b, -5))
-
 	
 	pass # replace with function body

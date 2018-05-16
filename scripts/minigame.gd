@@ -27,7 +27,7 @@ func _ready():
 		#It's a session execution.
 		testing = false
 		#Get properties from calling session.
-		difficulty = get_parent().get_parent().current_difficulty
+		difficulty = global.selected_difficulty
 		time_bar = get_parent().get_parent().get_node("game_timer").get_node("ProgressBar")
 		print("Difficulty level: "+str(difficulty))
 	print("This minigame has the difficulty level equal to "+str(difficulty))
