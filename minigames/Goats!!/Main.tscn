@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://minigames/Goats!!/Main.gd" type="Script" id=1]
 [ext_resource path="res://minigames/Goats!!/field0.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://minigames/Goats!!/goat_sprite0.png" type="Texture" id=7]
 [ext_resource path="res://minigames/Goats!!/aim.gd" type="Script" id=8]
 [ext_resource path="res://minigames/Goats!!/aim0.png" type="Texture" id=9]
+[ext_resource path="res://minigames/Goats!!/goat2.png" type="Texture" id=10]
+[ext_resource path="res://minigames/Goats!!/goat0.png" type="Texture" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -26,6 +28,25 @@ height = 20.0
 custom_solver_bias = 0.0
 radius = 1.0
 
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "Win",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "Lose",
+"speed": 5.0
+} ]
+
 [node name="Main" type="Node2D"]
 
 script/script = ExtResource( 1 )
@@ -33,6 +54,13 @@ NAME = "Goats!!"
 INSTRUCTION = "Shoot!"
 DURATION = 5
 TIMEOUT_WIN = false
+
+[node name="EndTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
 
 [node name="field0" type="Sprite" parent="."]
 
@@ -801,6 +829,7 @@ _update_shape_index = 0
 
 [node name="Aim" type="Area2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 320, 200 )
 input/pickable = true
 shapes/0/shape = SubResource( 3 )
@@ -824,5 +853,12 @@ texture = ExtResource( 9 )
 shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
+
+[node name="End" type="AnimatedSprite" parent="."]
+
+transform/pos = Vector2( 320, 200 )
+transform/scale = Vector2( 5, 5 )
+frames = SubResource( 4 )
+animation = "default"
 
 
