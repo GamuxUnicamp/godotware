@@ -13,6 +13,8 @@ onready var anim_transition = get_node("transition_animation")
 onready var command_label = get_node("command_label")
 # Reference to life meter's handler
 onready var life_meter = get_node("life_meter")
+# Reference to control_icons hcontainer
+onready var control_icons = get_node("command_label/control_icons/HBoxContainer")
 
 # Tracks if a minigame is currently runnning
 var is_minigame_running = false
@@ -69,6 +71,12 @@ func open_minigame():
 	#Changed command label
 	command_label.set_text(current_minigame.INSTRUCTION)
 	command_label.show()
+	control_icons.get_node("MouseIcon").hide()
+	control_icons.get_node("KeyIcon").hide()
+	if (current_minigame.USE_MOUSE_HUD):
+		control_icons.get_node("MouseIcon").show()
+	if (current_minigame.USE_KEYS_HUD):
+		control_icons.get_node("KeyIcon").show()
 	#Start animation
 	anim_transition.play("game_intro")
 	anim_transition.connect("finished", self, "_on_animation_finished")

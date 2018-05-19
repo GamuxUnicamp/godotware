@@ -8,6 +8,10 @@ export(String) var INSTRUCTION = "TAP!"
 export(int) var DURATION = 5.0
 # Behaviour during timeouts.
 export(bool) var TIMEOUT_WIN = false
+# Does it use keys?
+export(bool) var USE_KEYS_HUD = false
+# Does it use mouse?
+export(bool) var USE_MOUSE_HUD = false
 
 # Difficulty Level (ranging from 1 to 4). Don't forget it's set up during _ready(). (it won't work in _init())
 onready var difficulty = 0

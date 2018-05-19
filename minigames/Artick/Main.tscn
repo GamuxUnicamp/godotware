@@ -68,6 +68,8 @@ NAME = "Artick"
 INSTRUCTION = "Get them!!!"
 DURATION = 6
 TIMEOUT_WIN = true
+USE_KEYS_HUD = true
+USE_MOUSE_HUD = false
 
 [node name="artigo1" type="Area2D" parent="."]
 

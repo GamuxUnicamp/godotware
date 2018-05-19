@@ -61,6 +61,8 @@ NAME = "Gandhi_Simulator"
 INSTRUCTION = "Run Away"
 DURATION = 8
 TIMEOUT_WIN = true
+USE_KEYS_HUD = true
+USE_MOUSE_HUD = false
 
 [node name="Node2D" type="Node2D" parent="."]
 

@@ -30,6 +30,8 @@ NAME = "Hammer"
 INSTRUCTION = "Hit the nail!"
 DURATION = 5
 TIMEOUT_WIN = false
+USE_KEYS_HUD = false
+USE_MOUSE_HUD = true
 
 [node name="background" type="Sprite" parent="."]
 
