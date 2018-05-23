@@ -64,11 +64,14 @@ func button_color_click(color):
 	elif color == 4:#BLUE
 		play_blue()
 	#compare input list with generated list
-	for i in range(color_order_input.size()):
-		if color_order_input[i] != color_order[i]:
-			emit_signal("minigame_end", false)
-	if color_order_input.size() == color_order.size():
-		emit_signal("minigame_end", true)
+	if(color_order_input.size() > color_order.size()):
+		emit_signal("minigame_end", false)
+	else:
+		for i in range(color_order_input.size()):
+			if color_order_input[i] != color_order[i]:
+				emit_signal("minigame_end", false)
+		if color_order_input.size() == color_order.size():
+			emit_signal("minigame_end", true)
 
 func play_green():
 	get_node("SamplePlayer").play("green") #play sound
