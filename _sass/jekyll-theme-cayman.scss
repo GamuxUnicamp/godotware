@@ -25,6 +25,27 @@
   box-sizing: border-box;
 }
 
+img[src$="centerme"] {
+  display:block;
+  margin: 0 auto;
+}
+
+div {
+  padding: 5px;
+}
+
+.img_right {
+  float: right;
+}
+
+.img_left {
+  float: left;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
 body {
   padding: 0;
   margin: 0;
