@@ -38,7 +38,7 @@ Project Coordinator.</div>
 <img class="img_right" src="assets/photos/foto3.png" alt="Peace Simulator Team" width="200" height="200">
 <div style='text-align:center'>
 <h1>"Peace Simulator" team</h1>
-From left to right:<br>
+From left to right: Christian Massao Konishi, Matheus Fernandes Lopes, Gabriel de Freitas Garcia, Felipe Hideki Matoba.<br>
 Developers of "Peace Simulator".
 </div>
 </div>
