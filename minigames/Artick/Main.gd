@@ -7,6 +7,8 @@ extends "res://scripts/minigame.gd"
 # This signal is called when the minigame finishes
 signal minigame_end(win)
 
+onready var ratio = 1
+
 func _ready():
 	#= MINIGAME SETUP =#
 	#The command 'set_process(true)' is already called on base class _ready() function. It's not necessary to use it again.
@@ -23,6 +25,8 @@ func _process(delta):
 
 func start():
 	#Be sure to only enable minigame elements in this method.
+	ratio = 1 + 0.1*get_parent().get_parent().won_minigames
+	get_node("Personagem/Area2D").ratio = ratio
 	.start()
 	pass
 

@@ -29,6 +29,7 @@ func _on_perdeu():
 		acabou_desgraca = true
 		resultado = false
 		get_node("End").set_animation("Lose")
+		get_node("SamplePlayer").play("normal")
 		fim()
 		
 func _on_morreu():
@@ -38,6 +39,7 @@ func _on_morreu():
 			acabou_desgraca = true
 			resultado = true
 			get_node("End").set_animation("Win")
+			get_node("SamplePlayer").play("sleep")
 			fim()
 			
 func _on_timeout():
@@ -53,13 +55,13 @@ func start():
 		goat.connect("morreu", self, "_on_morreu")
 		var defWait
 		if difficulty == 1:
-			defWait = 0.3
+			defWait = 0.7
 		elif difficulty == 2:
-			defWait = 0.2
+			defWait = 0.5
 		elif difficulty == 3:
-			defWait = 0.15
+			defWait = 0.25
 		else:
-			defWait = 0.1
+			defWait = 0.125
 		goat.set_waitTime(defWait)
 	for flowerbed in get_node("Flowers").get_children():
 		for flower in flowerbed.get_children():

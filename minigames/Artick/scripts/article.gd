@@ -13,7 +13,7 @@ func _ready():
 
 func _process(delta):
 	a = get_pos()
-	set_pos(a+Vector2(0,240.0 * delta))
+	set_pos(a+Vector2(0,240.0 * delta))#*get_parent().ratio)
 	
 
 func _on_artigo1_body_enter( body ):
