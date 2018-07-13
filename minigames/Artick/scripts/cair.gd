@@ -13,6 +13,6 @@ func _fixed_process(delta):
 	b = get_overlapping_bodies()
 	for j in range(b.size()):
 		if b[j].get_name() == "ceiling" or b[j].get_name() == "platform1" or b[j].get_name() == "platform2":
-			get_parent().velocidade = 0.1
+			get_parent().velocidade.y = 0.1
 			pass
 

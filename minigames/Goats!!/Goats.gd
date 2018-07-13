@@ -25,10 +25,12 @@ func _ready():
 func set_waitTime(wait):
 	waitTime = wait/2 + (randf()*wait)
 	defWait = wait
+	timer = waitTime/2
 
 func die():
 	if alive:
 		get_node("Sprite").set_frame(2)
+		get_node("SamplePlayer").play("sleep")
 		alive = false
 		emit_signal("morreu")
 
@@ -44,4 +46,5 @@ func _process(delta):
 				get_node("Sprite").set_frame(1)
 			elif sprite == 1:
 				sprite = 0
+				get_node("SamplePlayer").play("normal")
 				get_node("Sprite").set_frame(0)

@@ -1,19 +1,19 @@
 extends KinematicBody2D
-var velocidade = 0
+var velocidade = Vector2(0,0)
 var gravidade = 1
 var pos = 0
-var velocidade_x = 0
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+var speed = 100
 
 func _ready():
-	set_fixed_process(true)
+	set_process(true)
 	pass
-func _fixed_process(delta):
-	velocidade = velocidade + gravidade
+func _process(delta):
+	velocidade.y = velocidade.y + gravidade
 	pos = get_pos().y
-	move(Vector2(velocidade_x,velocidade))
+	move(velocidade*delta*speed)
 	#if Input.is_key_pressed(KEY_LEFT):
 	#	move(Vector2(-4,0))
 	#	pass
