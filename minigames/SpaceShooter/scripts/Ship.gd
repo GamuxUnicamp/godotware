@@ -8,7 +8,7 @@ const scn_explosion = preload('res://minigames/SpaceShooter/scenes/Explosion.tsc
 const scn_flash = preload('res://minigames/SpaceShooter/scenes/Flash.tscn')
 
 # declare movement variables.
-var ACC = 0.15 # value to increase speed every frame if ship is in movement
+var ACC = 2 # value to increase speed every frame if ship is in movement
 var speed = Vector2() # amount to increase/decrease from position every frame
 
 # export ship's armor (life)
