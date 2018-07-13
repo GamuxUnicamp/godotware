@@ -1,8 +1,5 @@
 extends Node2D
 
-# This signal is called when the minigame finishes
-signal minigame_end(win)
-
 # Increase whole session's velocity
 var increase_world_velocity = true
 
@@ -16,6 +13,8 @@ onready var anim_transition = get_node("transition_animation")
 onready var command_label = get_node("command_label")
 # Reference to life meter's handler
 onready var life_meter = get_node("life_meter")
+# Reference to control_icons hcontainer
+onready var control_icons = get_node("command_label/control_icons/HBoxContainer")
 
 # Tracks if a minigame is currently runnning
 var is_minigame_running = false
@@ -31,25 +30,40 @@ onready var lost_minigames = 0
 onready var last_minigame_index = -1
 # Holds all minigame references for the current session
 onready var minigame_ref = []
+onready var minigame_ref_ind = []
+# Check if finished minigame
+onready var minigame_finished = false
+
 
 func _ready():
+	randomize()
 	#Populate minigame references array
 	var minigame_ref_string = global.get_available_minigames()
 	for s in minigame_ref_string:
 		minigame_ref.append(load(s))
+	_shuffle_minigame_ref_ind()
 	#Open first minigame
 	open_minigame()
 	pass
+
+func _shuffle_minigame_ref_ind():
+	minigame_ref_ind = range(minigame_ref.size())
+	for i in range(minigame_ref_ind.size()):
+		var ti = minigame_ref_ind[i]
+		var ri = randi()%minigame_ref_ind.size()
+		minigame_ref_ind[i] = minigame_ref_ind[ri]
+		minigame_ref_ind[ri] = ti
 
 #Initialize minigame
 func open_minigame():
 	#Delete minigame, if it still exists
 	if(current_minigame):
 		current_minigame.queue_free()
-	#Instantiate random minigame
-	randomize()
-	var random_minigame = select_minigame()
-	current_minigame = minigame_ref[random_minigame].instance()
+	
+	if(minigame_ref_ind.size() == 0):
+		_shuffle_minigame_ref_ind()
+	current_minigame = minigame_ref[minigame_ref_ind[0]].instance()
+	minigame_ref_ind.pop_front()
 	current_minigame.translate(-get_viewport_rect().size/2)
 	minigame_pod.add_child(current_minigame)
 	#Listen to minigame's end
@@ -57,6 +71,12 @@ func open_minigame():
 	#Changed command label
 	command_label.set_text(current_minigame.INSTRUCTION)
 	command_label.show()
+	control_icons.get_node("MouseIcon").hide()
+	control_icons.get_node("KeyIcon").hide()
+	if (current_minigame.USE_MOUSE_HUD):
+		control_icons.get_node("MouseIcon").show()
+	if (current_minigame.USE_KEYS_HUD):
+		control_icons.get_node("KeyIcon").show()
 	#Start animation
 	anim_transition.play("game_intro")
 	anim_transition.connect("finished", self, "_on_animation_finished")
@@ -65,6 +85,7 @@ func open_minigame():
 #Starts minigame
 func start_minigame():
 	print("Start Microgame!")
+	minigame_finished = false
 	#Hide command label
 	command_label.hide()
 	#Add signal
@@ -127,19 +148,10 @@ func update_life_meter():
 		life_meter.get_node("life3").hide()
 	pass
 
-# Returns a random non-repeated minigame index
-func select_minigame():
-	var value = int(rand_range(0,minigame_ref.size()))
-	while value == last_minigame_index:
-		value = int(rand_range(0,minigame_ref.size()))
-	last_minigame_index = value
-	return value
-
 func _on_minigame_finished(win):
-	end_minigame(win)
-	#close_minigame()
-	pass
+	if not minigame_finished:
+		minigame_finished = true
+		end_minigame(win)
 
 func _on_animation_finished():
 	start_minigame()
-	pass

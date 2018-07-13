@@ -1,0 +1,343 @@
+[gd_scene load_steps=20 format=1]
+
+[ext_resource path="res://minigames/Artick/Main.gd" type="Script" id=1]
+[ext_resource path="res://minigames/Artick/scripts/article.gd" type="Script" id=2]
+[ext_resource path="res://minigames/Artick/artigo.jpg" type="Texture" id=3]
+[ext_resource path="res://minigames/Artick/scripts/personagem.gd" type="Script" id=4]
+[ext_resource path="res://minigames/Artick/Idle (1).png" type="Texture" id=5]
+[ext_resource path="res://minigames/Artick/scripts/pulo.gd" type="Script" id=6]
+[ext_resource path="res://minigames/Artick/scripts/cair.gd" type="Script" id=7]
+[ext_resource path="res://minigames/Artick/platform.png" type="Texture" id=8]
+[ext_resource path="res://minigames/Artick/mars.jpeg" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.7103, 15.1605 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 35.6332, 58.9214 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 40.5329, 1.73248 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.1826, 2.25949 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 323.392, 31.3866 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 241.639 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 249.843 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 373.528, 10 )
+
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 87.6903, 12.4284 )
+
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 377.21, 10 )
+
+[node name="Main" type="Node2D"]
+
+transform/pos = Vector2( -2.27209, 0 )
+script/script = ExtResource( 1 )
+NAME = "Artick"
+INSTRUCTION = "Get them!!!"
+DURATION = 6
+TIMEOUT_WIN = true
+USE_KEYS_HUD = true
+USE_MOUSE_HUD = false
+
+[node name="artigo1" type="Area2D" parent="."]
+
+transform/pos = Vector2( 328.904, -57.186 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -6.57272, -6.24268 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="artigo1"]
+
+transform/pos = Vector2( -6.57272, -6.24268 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Sprite" type="Sprite" parent="artigo1"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -6.48486, -6.241 )
+transform/scale = Vector2( 0.148656, 0.117717 )
+texture = ExtResource( 3 )
+
+[node name="Personagem" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 315.319, 338.487 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 1.47015, -1.4702 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Personagem"]
+
+transform/pos = Vector2( 1.47015, -1.4702 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Sprite" type="Sprite" parent="Personagem"]
+
+transform/pos = Vector2( 10.0789, -1.45841 )
+transform/scale = Vector2( 0.312447, 0.269711 )
+texture = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="Personagem"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 1.84457, 60.3461 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Personagem/Area2D"]
+
+transform/pos = Vector2( 1.84457, 60.3461 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Area2D 2" type="Area2D" parent="Personagem"]
+
+transform/pos = Vector2( 3.42575, -41.3727 )
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.263519, -20.5546 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Personagem/Area2D 2"]
+
+transform/pos = Vector2( 0.263519, -20.5546 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="ground" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 320.023, 433.201 )
+input/pickable = false
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 1.44159, -1.94119 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+
+transform/pos = Vector2( 1.44159, -1.94119 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="right_wall" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 671.636, 224.887 )
+input/pickable = false
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -21.6171, 4.32861 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_wall"]
+
+transform/pos = Vector2( -21.6171, 4.32861 )
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 0
+
+[node name="left_wall" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( -32, 211 )
+input/pickable = false
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 22.2261, 12.1885 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall"]
+
+transform/pos = Vector2( 22.2261, 12.1885 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="ceiling" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 68.4187, -30.1229 )
+input/pickable = false
+shapes/0/shape = SubResource( 8 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 236.083, 19.3679 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling"]
+
+transform/pos = Vector2( 236.083, 19.3679 )
+shape = SubResource( 8 )
+trigger = false
+_update_shape_index = 0
+
+[node name="platform1" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 71.0975, 259.098 )
+input/pickable = false
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 4.72205, -1.07318 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="platform1"]
+
+transform/pos = Vector2( 9.07047, 0.932068 )
+transform/scale = Vector2( 0.123768, 0.131348 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform1"]
+
+transform/pos = Vector2( 4.72205, -1.07318 )
+shape = SubResource( 9 )
+trigger = false
+_update_shape_index = 0
+
+[node name="platform2" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 546.911, 260 )
+input/pickable = false
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 4.72205, -1.07318 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="platform2"]
+
+transform/pos = Vector2( 9.07047, 0.932068 )
+transform/scale = Vector2( 0.123768, 0.131348 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform2"]
+
+transform/pos = Vector2( 4.72205, -1.07318 )
+shape = SubResource( 9 )
+trigger = false
+_update_shape_index = 0
+
+[node name="TextureFrame" type="TextureFrame" parent="."]
+
+visibility/behind_parent = true
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 640.0
+margin/bottom = 400.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+
+[node name="dead_line" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 321.455, 455.709 )
+input/pickable = false
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -4.07254, -25.2497 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dead_line"]
+
+transform/pos = Vector2( -4.07254, -25.2497 )
+shape = SubResource( 10 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="body_enter" from="artigo1" to="artigo1" method="_on_artigo1_body_enter"]
+
+

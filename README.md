@@ -151,3 +151,9 @@ Tags servem para manter um certo controle da versão "oficial" do programa, serv
 *Autor: [@mrtheduts](https://github.com/mrtheduts/)*<br />
 *Esse readme é de uso livre.* <br />
 *Sugestões são bem-vindas.*
+=======
+# godotware
+
+## Icon Credits
+Arrow Keys icon made by Darius Dan from www.flaticon.com.
+Mouse icon made by Freepik from www.flaticon.com.

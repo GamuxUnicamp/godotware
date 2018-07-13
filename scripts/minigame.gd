@@ -8,6 +8,10 @@ export(String) var INSTRUCTION = "TAP!"
 export(int) var DURATION = 5.0
 # Behaviour during timeouts.
 export(bool) var TIMEOUT_WIN = false
+# Does it use keys?
+export(bool) var USE_KEYS_HUD = false
+# Does it use mouse?
+export(bool) var USE_MOUSE_HUD = false
 
 # Difficulty Level (ranging from 1 to 4). Don't forget it's set up during _ready(). (it won't work in _init())
 onready var difficulty = 0
@@ -27,7 +31,7 @@ func _ready():
 		#It's a session execution.
 		testing = false
 		#Get properties from calling session.
-		difficulty = get_parent().get_parent().current_difficulty
+		difficulty = global.selected_difficulty
 		time_bar = get_parent().get_parent().get_node("game_timer").get_node("ProgressBar")
 		print("Difficulty level: "+str(difficulty))
 	print("This minigame has the difficulty level equal to "+str(difficulty))
