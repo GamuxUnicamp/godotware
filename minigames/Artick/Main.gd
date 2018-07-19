@@ -25,7 +25,7 @@ func _process(delta):
 
 func start():
 	#Be sure to only enable minigame elements in this method.
-	ratio = 1 + 0.1*get_parent().get_parent().won_minigames
+	ratio = OS.get_time_scale() # Ajusts character speed by increasing difficuty
 	get_node("Personagem/Area2D").ratio = ratio
 	.start()
 	pass
