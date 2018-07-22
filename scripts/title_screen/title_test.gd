@@ -3,7 +3,6 @@ extends Node2D
 onready var diffOptButton = get_node("difficulty_optbtn")
 
 func _ready():
-	global.selected_difficulty = 1#Sets Easy as default difficulty setting.
 	diffOptButton.add_item("Easy")
 	diffOptButton.add_item("Medium")
 	diffOptButton.add_item("Hard")

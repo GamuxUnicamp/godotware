@@ -297,3 +297,6 @@ platform/windows/godot_res.res
 
 # Krita editable files
 *.kra
+
+# Game save files
+*.sav

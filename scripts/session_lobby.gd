@@ -105,6 +105,7 @@ func end_minigame(win):
 	if win:
 		print("You Win!")
 		won_minigames += 1
+		global.current_score = won_minigames
 		#If checked
 		if increase_world_velocity:
 			OS.set_time_scale(1 + won_minigames*0.05) # Gotta go fast! # Increases speed by 2% for every minigame won

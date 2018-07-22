@@ -4,6 +4,13 @@ extends Node
 var main_node setget , _get_main_node
 var view_size setget , _get_view_size
 
+#Store high score values
+var current_score = 0
+var high_score_easy = 0
+var high_score_medium = 0
+var high_score_hard = 0
+var high_score_insane = 0
+
 onready var debug_minigame = ""
 
 func get_debug_minigame():
