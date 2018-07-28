@@ -10,6 +10,7 @@ var seguindo_mouse = false
 signal minigame_end(win)
 
 func _ready():
+	DURATION = 6.5
 	#= MINIGAME SETUP =#
 	#The command 'set_process(true)' is already called on base class _ready() function. It's not necessary to use it again.
 	randomize()

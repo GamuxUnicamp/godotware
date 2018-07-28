@@ -10,7 +10,7 @@ var color_order_input = []
 
 func _ready():
 	#= MINIGAME SETUP =#
-	DURATION = 4 + difficulty*0.5 # 4 seconds + 0.5 seconds for every dificulty level
+	DURATION = 4 + difficulty*0.6 # 4 seconds + 0.6 seconds for every dificulty level
 	for i in range(1,difficulty+3):
 		randomize()
 		color_order.append(randi()%4+1)
