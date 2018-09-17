@@ -62,6 +62,8 @@ func open_minigame():
 	
 	if(minigame_ref_ind.size() == 0):
 		_shuffle_minigame_ref_ind()
+	print(minigame_ref)
+	print(minigame_ref_ind)
 	current_minigame = minigame_ref[minigame_ref_ind[0]].instance()
 	minigame_ref_ind.pop_front()
 	current_minigame.translate(-get_viewport_rect().size/2)

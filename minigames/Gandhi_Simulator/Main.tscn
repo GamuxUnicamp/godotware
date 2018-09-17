@@ -6,8 +6,9 @@
 [ext_resource path="res://minigames/Gandhi_Simulator/Gandhi-simulator_original/Personagens/Churchill.png" type="Texture" id=4]
 [ext_resource path="res://minigames/Gandhi_Simulator/Gandhi-simulator_original/Gandhi.gd" type="Script" id=5]
 [ext_resource path="res://minigames/Gandhi_Simulator/Gandhi-simulator_original/Personagens/Gandhi1.png" type="Texture" id=6]
-[ext_resource path="res://minigames/Gandhi_Simulator/Gandhi-simulator_original/Pontuações.gd" type="Script" id=7]
+[ext_resource path="res://minigames/Gandhi_Simulator/Gandhi-simulator_original/Pontuacoes.gd" type="Script" id=7]
 [ext_resource path="res://minigames/Gandhi_Simulator/india_background.jpg" type="Texture" id=8]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 

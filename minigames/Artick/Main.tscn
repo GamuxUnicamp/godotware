@@ -4,7 +4,7 @@
 [ext_resource path="res://minigames/Artick/scripts/article.gd" type="Script" id=2]
 [ext_resource path="res://minigames/Artick/artigo.jpg" type="Texture" id=3]
 [ext_resource path="res://minigames/Artick/scripts/personagem.gd" type="Script" id=4]
-[ext_resource path="res://minigames/Artick/Idle (1).png" type="Texture" id=5]
+[ext_resource path="res://minigames/Artick/idle.png" type="Texture" id=5]
 [ext_resource path="res://minigames/Artick/scripts/pulo.gd" type="Script" id=6]
 [ext_resource path="res://minigames/Artick/scripts/cair.gd" type="Script" id=7]
 [ext_resource path="res://minigames/Artick/platform.png" type="Texture" id=8]
