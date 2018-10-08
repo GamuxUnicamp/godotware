@@ -42,6 +42,7 @@ func mouse_chegou():
 func area_jogador(area):
 	if area.get_name() == "final":
 		emit_signal("minigame_end", true)
+		get_node("final").hide()
 	else:
 		emit_signal("minigame_end", false)
 

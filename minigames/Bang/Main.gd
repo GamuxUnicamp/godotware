@@ -19,6 +19,7 @@ var end = false
 
 	
 func end():
+	pause_timer()
 	get_node("EndTimer").start()
 	
 func _ready():
