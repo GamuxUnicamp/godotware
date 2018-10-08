@@ -19,6 +19,7 @@ var numCabras = 3
 var resultado = false
 
 func fim():
+	get_node("Aim").hide()
 	pause_timer()
 	get_node("EndTimer").start()
 	get_node("Flowers").queue_free()
