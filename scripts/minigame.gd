@@ -13,6 +13,8 @@ export(bool) var USE_KEYS_HUD = false
 # Does it use mouse?
 export(bool) var USE_MOUSE_HUD = false
 
+
+
 # Difficulty Level (ranging from 1 to 4). Don't forget it's set up during _ready(). (it won't work in _init())
 onready var difficulty = 0
 # Reference to Timeout.
@@ -21,6 +23,8 @@ onready var time_bar = null
 onready var testing = false
 # Determinate if duration was set.
 onready var time_set = false
+# Determines if the timer is stopped
+onready var timer_paused = false
 
 func _ready():
 	#Check if it's a test or a session execution.
@@ -68,19 +72,26 @@ func stop():
 
 # Updates the timer bar values.
 func update_timer(delta):
-	#Updates remaining time for the minigame.
-	var time_percentage = time_bar.get_value()-delta
-	time_bar.set_value(time_percentage)
-	#Check if time ran out.
-	if time_percentage <= 0:
-		#End minigame by timeout.
-		if not testing:
-			emit_signal("minigame_end", TIMEOUT_WIN)
-	pass
+	if not timer_paused:
+		#Updates remaining time for the minigame.
+		var time_percentage = time_bar.get_value()-delta
+		time_bar.set_value(time_percentage)
+		#Check if time ran out.
+		if time_percentage <= 0:
+			#End minigame by timeout.
+			if not testing:
+				emit_signal("minigame_end", TIMEOUT_WIN)
+		pass
 
 # Rotate minigame in case its played on vertical.
 func rotate_minigame():
 	set_pos(Vector2(-get_viewport_rect().size.x/2,get_viewport_rect().size.y/2))
 	set_rot(PI/2.0)
 
-
+func pause_timer():
+	timer_paused = true
+	pass
+	
+func resume_timer():
+	timer_paused = false
+	pass

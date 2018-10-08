@@ -19,6 +19,7 @@ var numCabras = 3
 var resultado = false
 
 func fim():
+	pause_timer()
 	get_node("EndTimer").start()
 	get_node("Flowers").queue_free()
 	get_node("Goats").queue_free()
@@ -50,6 +51,7 @@ func start():
 	get_node("Aim").set_process(true)
 	get_node("Aim").set_process_input(true)
 	get_node("EndTimer").connect("timeout",self,"_on_timeout")
+	var maior_tempo = 0
 	for goat in get_node("Goats").get_children():
 		goat.set_process(true)
 		goat.connect("morreu", self, "_on_morreu")
@@ -63,6 +65,9 @@ func start():
 		else:
 			defWait = 0.125
 		goat.set_waitTime(defWait)
+		if goat.waitTime > maior_tempo:
+			maior_tempo = goat.waitTime
+	DURATION = maior_tempo*13
 	for flowerbed in get_node("Flowers").get_children():
 		for flower in flowerbed.get_children():
 			flower.set_process(true)
