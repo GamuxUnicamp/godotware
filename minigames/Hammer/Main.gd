@@ -22,7 +22,6 @@ func _ready():
 		get_node("arrow/AnimationPlayer").play("Move",-1,1.9)
 	else:
 		get_node("arrow/AnimationPlayer").play("Move",-1,1.5)# PRA TESTAR ISOLADO
-	set_process_input(true)
 	#The command 'set_process(true)' is already called on base class _ready() function. It's not necessary to use it again.
 
 func _process(delta):
@@ -36,6 +35,7 @@ func _process(delta):
 
 func start():
 	#Be sure to only enable minigame elements in this method.
+	set_process_input(true)
 	.start()
 	pass
 
