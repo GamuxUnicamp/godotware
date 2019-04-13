@@ -45,9 +45,11 @@ func stop():
 	pass
 
 func _input(event):
-	if (event.type == InputEvent.MOUSE_BUTTON):
+	if (event.type == InputEvent.KEY):
 		var xpos = get_node("arrow").get_pos().x
+		print(xpos)
 		if (xpos>=250 and xpos<=400):
 			emit_signal("minigame_end", true)
 		else:
 			emit_signal("minigame_end", false)
+		set_process_input(false)
